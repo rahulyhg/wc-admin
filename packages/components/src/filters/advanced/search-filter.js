@@ -99,7 +99,7 @@ class SearchFilter extends Component {
 		return (
 			<fieldset tabIndex="0">
 				<legend className="screen-reader-text">
-					{ this.getLegend( filter, config, selected ) }
+					{ this.getLegend( filter, config ) }
 				</legend>
 				<div
 					className={ classnames( 'woocommerce-filters-advanced__fieldset', {
