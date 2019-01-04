@@ -18,7 +18,9 @@ class Docs extends Component {
 	}
 
 	getReadme() {
-		const readme = require( `../../docs/components/${ this.props.filePath }.md` );
+		const { filePath, isAnalyticsComponent } = this.props;
+		const componentType = isAnalyticsComponent ? 'analytics' : 'packages';
+		const readme = require( `../../docs/components/${ componentType }/${ filePath }.md` );
 		if ( ! readme ) {
 			return;
 		}
