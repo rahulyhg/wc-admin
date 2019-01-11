@@ -381,7 +381,6 @@ class WC_Admin_Reports_Orders_Data_Store extends WC_Admin_Reports_Data_Store imp
 		$order_ids = wc_get_orders(
 			array(
 				'limit'  => -1,
-				'status' => parent::get_report_order_statuses(),
 				'type'   => 'shop_order',
 				'return' => 'ids',
 			)
@@ -435,16 +434,6 @@ class WC_Admin_Reports_Orders_Data_Store extends WC_Admin_Reports_Data_Store imp
 
 		if ( ! $order->get_id() || ! $order->get_date_created() ) {
 			return false;
-		}
-
-		if ( ! in_array( $order->get_status(), parent::get_report_order_statuses(), true ) ) {
-			$wpdb->delete(
-				$table_name,
-				array(
-					'order_id' => $order->get_id(),
-				)
-			);
-			return;
 		}
 
 		$data   = array(
